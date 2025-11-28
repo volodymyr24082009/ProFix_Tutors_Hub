@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="uk" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutors Network Hub - Онлайн Чат</title>
-    <meta
-      name="description"
-      content="Tutors Network Hub - платформа, що з'єднує клієнтів з професійними майстрами для різних галузей"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    /><link rel="stylesheet" href="./css/header.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/chat.css" />
-  </head>
-  <body>
-   <!-- Header -->
-   <header class="header">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutors Network Hub - Онлайн Чат</title>
+  <meta name="description"
+    content="Tutors Network Hub - платформа, що з'єднує клієнтів з професійними майстрами для різних галузей" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/header.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/chat.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
     <div class="header-container">
       <a href="index.html" class="logo">
         <i class="fas fa-tools"></i>
@@ -33,19 +28,14 @@
 
         <a href="chat.html" class="nav-link" id="chat">Чат</a>
         <a href="news.html" class="nav-link" id="news">Новини</a>
-        <a href="info.html" class="nav-link" id="info"
-          >Повідомлення(майстри)</a
-        >
+        <a href="info.html" class="nav-link" id="info">Повідомлення(майстри)</a>
         <a href="order.html" class="nav-link" id="orders">Замовлення</a>
         <a href="profile.html" class="nav-link" id="profileLink">Профіль</a>
         <button class="nav-button" id="loginBtn">
           <i class="fas fa-sign-in-alt"></i>Увійти
         </button>
-        <label class="theme-switch"
-          ><input type="checkbox" id="themeToggle" /><span class="slider">
-            <span class="moon">🌙</span><span class="sun">☀️</span></span
-          ></label
-        >
+        <label class="theme-switch"><input type="checkbox" id="themeToggle" /><span class="slider">
+            <span class="moon">🌙</span><span class="sun">☀️</span></span></label>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
@@ -53,167 +43,190 @@
     </div>
   </header>
 
-    <!-- Main Content -->
-    <main>
-      <div class="chat-wrapper">
-        <div class="chat-container">
-          <div class="chat-header">
-            <h1><i class="fas fa-comments"></i> Онлайн Чат</h1>
-            <div class="user-info">
-              <span id="current-user">Не авторизовано</span>
-              <button id="logout-btn" class="hidden">Вийти</button>
-            </div>
+  <!-- Main Content -->
+  <main>
+    <div class="chat-wrapper">
+      <div class="chat-container">
+        <div class="chat-header">
+          <h1><i class="fas fa-comments"></i> Онлайн Чат</h1>
+          <div class="user-info">
+            <span id="current-user">Не авторизовано</span>
+            <button id="logout-btn" class="hidden">Вийти</button>
           </div>
+        </div>
 
-          <div class="login-container" id="login-container">
-            <div class="login-spinner">
-              <i class="fas fa-spinner fa-spin"></i>
-              <p>Завантаження даних користувача та історії чату...</p>
-            </div>
+        <div class="login-container" id="login-container">
+          <div class="login-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Завантаження даних користувача та історії чату...</p>
           </div>
+        </div>
 
-          <div class="chat-content hidden" id="chat-content">
-            <div class="messages-container" id="messages-container"></div>
+        <div class="chat-content hidden" id="chat-content">
+          <div class="messages-container" id="messages-container"></div>
 
-            <div class="message-input-container">
-              <input
-                type="text"
-                id="message-input"
-                placeholder="Введіть повідомлення..."
-              />
-              <button id="send-btn">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </div>
+          <div class="message-input-container">
+            <input type="text" id="message-input" placeholder="Введіть повідомлення..." />
+            <button id="send-btn">
+              <i class="fas fa-paper-plane"></i>
+            </button>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <div class="footer-logo">
-            <i class="fas fa-graduation-cap"></i>
-            Tutors Network Hub
-          </div>
-          <p class="footer-description">
-            Tutors Network Hub — ваш надійний партнер у світі освіти. Ми
-            об'єднуємо досвідчених репетиторів та учнів, щоб забезпечити
-            найкращі результати навчання з різних предметів.
-          </p>
-          <div class="footer-social">
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 class="footer-title">Швидкі посилання</h3>
-          <ul class="footer-links">
-            <li class="footer-link">
-              <a href="index.html">
-                <i class="fas fa-chevron-right"></i> Головна
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="#industries">
-                <i class="fas fa-chevron-right"></i> Предмети
-              </a>
-            </li>
-            <li class="footer-link" id="profileFooterLink">
-              <a href="faq.html">
-                <i class="fas fa-chevron-right"></i> Часті запитання
-              </a>
-            </li>
-            <li class="footer-link" id="news">
-              <a href="terms-of-use.html">
-                <i class="fas fa-chevron-right"></i> Умови використання
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="privacy-policy.html">
-                <i class="fas fa-chevron-right"></i> Політика конфіденційності
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="./about.html">
-                <i class="fas fa-chevron-right"></i> Про нас
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3 class="footer-title">Контакти</h3>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Адреса</div>
-              <div class="contact-value">м. Житомир, вул. Чуднівська, 103</div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-phone-alt"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Телефон</div>
-              <div class="contact-value">
-                <a href="tel:+380123456789">+380 96 538 3239</a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Email</div>
-              <div class="contact-value">
-                <a href="mailto:info@Tutorshub.com"
-                  >24g_chvv@liceum.ztu.edu.ua</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Графік роботи</div>
-              <div class="contact-value">Пн-Пт: 9:00 - 18:00</div>
-            </div>
-          </div>
+  <!-- Added modal for chat history restoration -->
+  <div class="history-modal-overlay" id="historyModal">
+    <div class="history-modal">
+      <div class="history-modal-header">
+        <i class="fas fa-history"></i>
+        <h2>Історія чату</h2>
+      </div>
+      <div class="history-modal-content">
+        <p>Знайдено збережену історію чату. Що ви хочете зробити?</p>
+        <div class="history-info">
+          <i class="fas fa-info-circle"></i>
+          <span id="historyMessageCount">0 повідомлень</span>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p class="copyright">
-          &copy; 2025 Tutors Network Hub. Всі права захищені.
+      <div class="history-modal-actions">
+        <button class="history-btn history-btn-load" id="loadHistoryBtn">
+          <i class="fas fa-check"></i>
+          Завантажити історію
+        </button>
+        <button class="history-btn history-btn-clear" id="clearHistoryBtn">
+          <i class="fas fa-trash"></i>
+          Почати заново
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- </CHANGE> -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <i class="fas fa-graduation-cap"></i>
+          Tutors Network Hub
+        </div>
+        <p class="footer-description">
+          Tutors Network Hub — ваш надійний партнер у світі освіти. Ми
+          об'єднуємо досвідчених репетиторів та учнів, щоб забезпечити
+          найкращі результати навчання з різних предметів.
         </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
       </div>
-    </footer>
+      <div class="footer-section">
+        <h3 class="footer-title">Швидкі посилання</h3>
+        <ul class="footer-links">
+          <li class="footer-link">
+            <a href="index.html">
+              <i class="fas fa-chevron-right"></i> Головна
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="#industries">
+              <i class="fas fa-chevron-right"></i> Предмети
+            </a>
+          </li>
+          <li class="footer-link" id="profileFooterLink">
+            <a href="faq.html">
+              <i class="fas fa-chevron-right"></i> Часті запитання
+            </a>
+          </li>
+          <li class="footer-link" id="news">
+            <a href="terms-of-use.html">
+              <i class="fas fa-chevron-right"></i> Умови використання
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="privacy-policy.html">
+              <i class="fas fa-chevron-right"></i> Політика конфіденційності
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="./about.html">
+              <i class="fas fa-chevron-right"></i> Про нас
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-title">Контакти</h3>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Адреса</div>
+            <div class="contact-value">м. Житомир, вул. Чуднівська, 103</div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">
+              <a href="tel:+380123456789">+380 96 538 3239</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:info@Tutorshub.com">24g_chvv@liceum.ztu.edu.ua</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Графік роботи</div>
+            <div class="contact-value">Пн-Пт: 9:00 - 18:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Tutors Network Hub. Всі права захищені.
+      </p>
+    </div>
+  </footer>
 
 
-    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="./js/role.js"></script>
-  </body>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="./js/role.js"></script>
+</body>
+
 </html>

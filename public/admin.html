@@ -1,294 +1,314 @@
 <!DOCTYPE html>
 <html lang="uk" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Адмін-панель - Tutors Network Hub</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="./css/admin.css" />
 
-    <!-- Add additional meta tags for better mobile experience -->
-    <meta name="theme-color" content="#1a2238" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-  </head>
-  <body>
-    <!-- Модальне вікно для пароля -->
-    <div class="modal-backdrop" id="passwordModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title">Вхід до адмін-панелі</h3>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="form-label">Введіть пароль для доступу</label>
-            <input
-              type="password"
-              class="form-control"
-              id="adminPassword"
-              placeholder="Введіть пароль"
-            />
-            <div
-              id="passwordError"
-              class="password-error"
-              style="display: none; color: #e74c3c; margin-top: 10px"
-            >
-              Пароль введено неправильно
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Адмін-панель - Tutors Network Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./css/admin.css" />
+
+  <!-- Add additional meta tags for better mobile experience -->
+  <meta name="theme-color" content="#1a2238" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+</head>
+
+<body>
+  <!-- Модальне вікно для пароля -->
+  <div class="modal-backdrop" id="passwordModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Вхід до адмін-панелі</h3>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Введіть пароль для доступу</label>
+          <input type="password" class="form-control" id="adminPassword" placeholder="Введіть пароль" />
+          <div id="passwordError" class="password-error" style="display: none; color: #e74c3c; margin-top: 10px">
+            Пароль введено неправильно
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" id="submitPasswordBtn">Увійти</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="submitPasswordBtn">Увійти</button>
       </div>
     </div>
-    <div class="admin-layout">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="sidebar-header">
-          <a href="index.html" class="logo">
-            <i class="fas fa-tools"></i>
-            <span>ProFix Network</span>
+  </div>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="logo">
+          <i class="fas fa-tools"></i>
+          <span>Tutors Network Hub</span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#dashboard" class="active" data-tab="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Дашборд</span>
           </a>
+        </li>
+        <li>
+          <a href="#users" data-tab="users">
+            <i class="fas fa-users"></i>
+            <span>Учні</span>
+          </a>
+        </li>
+        <li>
+          <a href="#masters" data-tab="masters">
+            <i class="fas fa-user-tie"></i>
+            <span>Репетитори</span>
+          </a>
+        </li>
+        <li>
+          <a href="#orders" data-tab="orders">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Уроки</span>
+          </a>
+        </li>
+        <li>
+          <a href="#reviews" data-tab="reviews">
+            <i class="fas fa-star"></i>
+            <span>Відгуки</span>
+          </a>
+        </li>
+        <li>
+          <a href="#news" data-tab="news">
+            <i class="fas fa-newspaper"></i>
+            <span>Новини</span>
+          </a>
+        </li>
+        <li>
+          <a href="#settings" data-tab="settings">
+            <i class="fas fa-cog"></i>
+            <span>Налаштування</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            <span>На сайт</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-title">
+          <h1>Адмін-панель</h1>
         </div>
-        <ul class="sidebar-menu">
-          <li>
-            <a href="#dashboard" class="active" data-tab="dashboard">
-              <i class="fas fa-tachometer-alt"></i>
-              <span>Дашборд</span>
-            </a>
-          </li>
-          <li>
-            <a href="#users" data-tab="users">
-              <i class="fas fa-users"></i>
-              <span>Користувачі</span>
-            </a>
-          </li>
-          <li>
-            <a href="#masters" data-tab="masters">
-              <i class="fas fa-user-tie"></i>
-              <span>Майстри</span>
-            </a>
-          </li>
-          <li>
-            <a href="#orders" data-tab="orders">
-              <i class="fas fa-clipboard-list"></i>
-              <span>Заявки</span>
-            </a>
-          </li>
-          <li>
-            <a href="#reviews" data-tab="reviews">
-              <i class="fas fa-star"></i>
-              <span>Відгуки</span>
-            </a>
-          </li>
-          <li>
-            <a href="#news" data-tab="news">
-              <i class="fas fa-newspaper"></i>
-              <span>Новини</span>
-            </a>
-          </li>
-          <li>
-            <a href="#settings" data-tab="settings">
-              <i class="fas fa-cog"></i>
-              <span>Налаштування</span>
-            </a>
-          </li>
-          <li>
-            <a href="index.html">
-              <i class="fas fa-home"></i>
-              <span>На сайт</span>
-            </a>
-          </li>
-        </ul>
+        <div class="header-actions">
+          <label class="theme-switch">
+            <input type="checkbox" id="themeToggle" />
+            <span class="slider">
+              <span class="moon"><i class="fas fa-moon"></i></span>
+              <span class="sun"><i class="fas fa-sun"></i></span>
+            </span>
+          </label>
+          <div class="user-menu">
+            <button class="user-menu-btn" id="userMenuBtn">
+              <div class="user-avatar">A</div>
+              <span>Адміністратор</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="user-menu-dropdown" id="userMenuDropdown">
+              <a href="profile.html"><i class="fas fa-user"></i> Профіль</a>
+              <a href="#"><i class="fas fa-cog"></i> Налаштування</a>
+              <a href="auth.html"><i class="fas fa-sign-out-alt"></i> Вихід</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <!-- Header -->
-        <div class="header">
-          <div class="header-title">
-            <h1>Адмін-панель</h1>
-          </div>
-          <div class="header-actions">
-            <label class="theme-switch">
-              <input type="checkbox" id="themeToggle" />
-              <span class="slider">
-                <span class="moon"><i class="fas fa-moon"></i></span>
-                <span class="sun"><i class="fas fa-sun"></i></span>
-              </span>
-            </label>
-            <div class="user-menu">
-              <button class="user-menu-btn" id="userMenuBtn">
-                <div class="user-avatar">A</div>
-                <span>Адміністратор</span>
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="user-menu-dropdown" id="userMenuDropdown">
-                <a href="profile.html"><i class="fas fa-user"></i> Профіль</a>
-                <a href="#"><i class="fas fa-cog"></i> Налаштування</a>
-                <a href="auth.html"
-                  ><i class="fas fa-sign-out-alt"></i> Вихід</a
-                >
+      <!-- Dashboard Tab -->
+      <div id="dashboard-tab" class="tab-content active">
+        <div class="dashboard-cards">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Учні</h3>
+              <div class="card-icon users">
+                <i class="fas fa-users"></i>
               </div>
+            </div>
+            <div class="card-value" id="totalUsers">0</div>
+            <div class="card-change positive">
+              <i class="fas fa-arrow-up"></i>
+              <span id="usersChange">0%</span> за місяць
             </div>
           </div>
-        </div>
-
-        <!-- Dashboard Tab -->
-        <div id="dashboard-tab" class="tab-content active">
-          <div class="dashboard-cards">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Користувачі</h3>
-                <div class="card-icon users">
-                  <i class="fas fa-users"></i>
-                </div>
-              </div>
-              <div class="card-value" id="totalUsers">0</div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span id="usersChange">0%</span> за місяць
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Репетитори</h3>
+              <div class="card-icon masters">
+                <i class="fas fa-user-tie"></i>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Майстри</h3>
-                <div class="card-icon masters">
-                  <i class="fas fa-user-tie"></i>
-                </div>
-              </div>
-              <div class="card-value" id="totalMasters">0</div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span id="mastersChange">0%</span> за місяць
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Заявки</h3>
-                <div class="card-icon orders">
-                  <i class="fas fa-clipboard-list"></i>
-                </div>
-              </div>
-              <div class="card-value" id="totalOrders">0</div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span>15%</span> за місяць
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Відгуки</h3>
-                <div class="card-icon reviews">
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-              <div class="card-value" id="totalReviews">0</div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span id="reviewsChange">0%</span> за місяць
-              </div>
+            <div class="card-value" id="totalMasters">0</div>
+            <div class="card-change positive">
+              <i class="fas fa-arrow-up"></i>
+              <span id="mastersChange">0%</span> за місяць
             </div>
           </div>
-
-          <div class="charts-container">
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Користувачі та майстри</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="userMasterChart"></canvas>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Уроки</h3>
+              <div class="card-icon orders">
+                <i class="fas fa-clipboard-list"></i>
               </div>
             </div>
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Вікова демографія</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="ageChart"></canvas>
-              </div>
+            <div class="card-value" id="totalOrders">0</div>
+            <div class="card-change positive">
+              <i class="fas fa-arrow-up"></i>
+              <span>15%</span> за місяць
             </div>
           </div>
-
-          <div class="table-container">
-            <div class="table-header">
-              <h3 class="table-title">Останні заявки</h3>
-              <div class="table-actions">
-                <div class="search-box">
-                  <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="orderSearchInput"
-                  />
-                </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Відгуки</h3>
+              <div class="card-icon reviews">
+                <i class="fas fa-star"></i>
               </div>
             </div>
-            <div class="table-responsive">
-              <table id="recentOrdersTable">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Тема</th>
-                    <th>Клієнт</th>
-                    <th>Телефон</th>
-                    <th>Статус</th>
-                    <th>Майстер</th>
-                    <th>Дата</th>
-                    <th>Дії</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Table content will be dynamically populated -->
-                </tbody>
-              </table>
+            <div class="card-value" id="totalReviews">0</div>
+            <div class="card-change positive">
+              <i class="fas fa-arrow-up"></i>
+              <span id="reviewsChange">0%</span> за місяць
             </div>
           </div>
         </div>
 
-        <!-- Users Tab -->
-        <div id="users-tab" class="tab-content">
+        <div class="charts-container">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Учні та репетитори</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="userMasterChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Вікова демографія</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="ageChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <div class="table-header">
+            <h3 class="table-title">Останні уроки</h3>
+            <div class="table-actions">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Пошук..." id="orderSearchInput" />
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table id="recentOrdersTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Предмет</th>
+                  <th>Учень</th>
+                  <th>Телефон</th>
+                  <th>Статус</th>
+                  <th>Репетитор</th>
+                  <th>Дата</th>
+                  <th>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Table content will be dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Tab -->
+      <div id="users-tab" class="tab-content">
+        <div class="table-container">
+          <div class="table-header">
+            <h3 class="table-title">Учні</h3>
+            <div class="table-actions">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Пошук..." id="userSearchInput" />
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table id="usersTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Ім'я користувача</th>
+                  <th>Роль</th>
+                  <th>Ім'я</th>
+                  <th>Прізвище</th>
+                  <th>Email</th>
+                  <th>Предмети</th>
+                  <th>Навички</th>
+                  <th>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Table content will be dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="usersPagination">
+            <!-- Pagination will be dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Masters Tab -->
+      <div id="masters-tab" class="tab-content">
+        <div class="content-tabs">
+          <button class="content-tab active" data-content="master-list">
+            Список репетиторів
+          </button>
+          <button class="content-tab" data-content="master-requests">
+            Запити на роль репетитора
+          </button>
+        </div>
+
+        <div id="master-list-content" class="content-tab-pane active">
           <div class="table-container">
             <div class="table-header">
-              <h3 class="table-title">Користувачі</h3>
+              <h3 class="table-title">Репетитори</h3>
               <div class="table-actions">
                 <div class="search-box">
                   <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="userSearchInput"
-                  />
+                  <input type="text" placeholder="Пошук..." id="masterSearchInput" />
                 </div>
               </div>
             </div>
             <div class="table-responsive">
-              <table id="usersTable">
+              <table id="mastersTable">
                 <thead>
                   <tr>
                     <th>ID</th>
                     <th>Ім'я користувача</th>
-                    <th>Роль</th>
                     <th>Ім'я</th>
                     <th>Прізвище</th>
                     <th>Email</th>
-                    <th>Галузі</th>
+                    <th>Предмети</th>
                     <th>Навички</th>
+                    <th>Статус</th>
                     <th>Дії</th>
                   </tr>
                 </thead>
@@ -297,137 +317,35 @@
                 </tbody>
               </table>
             </div>
-            <div class="pagination" id="usersPagination">
+            <div class="pagination" id="mastersPagination">
               <!-- Pagination will be dynamically populated -->
             </div>
           </div>
         </div>
 
-        <!-- Masters Tab -->
-        <div id="masters-tab" class="tab-content">
-          <div class="content-tabs">
-            <button class="content-tab active" data-content="master-list">
-              Список майстрів
-            </button>
-            <button class="content-tab" data-content="master-requests">
-              Запити на роль майстра
-            </button>
-          </div>
-
-          <div id="master-list-content" class="content-tab-pane active">
-            <div class="table-container">
-              <div class="table-header">
-                <h3 class="table-title">Майстри</h3>
-                <div class="table-actions">
-                  <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input
-                      type="text"
-                      placeholder="Пошук..."
-                      id="masterSearchInput"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="table-responsive">
-                <table id="mastersTable">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Ім'я користувача</th>
-                      <th>Ім'я</th>
-                      <th>Прізвище</th>
-                      <th>Email</th>
-                      <th>Галузі</th>
-                      <th>Навички</th>
-                      <th>Статус</th>
-                      <th>Дії</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Table content will be dynamically populated -->
-                  </tbody>
-                </table>
-              </div>
-              <div class="pagination" id="mastersPagination">
-                <!-- Pagination will be dynamically populated -->
-              </div>
-            </div>
-          </div>
-
-          <div id="master-requests-content" class="content-tab-pane">
-            <div class="table-container">
-              <div class="table-header">
-                <h3 class="table-title">Запити на роль майстра</h3>
-                <div class="table-actions">
-                  <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input
-                      type="text"
-                      placeholder="Пошук..."
-                      id="requestSearchInput"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="table-responsive">
-                <table id="masterRequestsTable">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Користувач</th>
-                      <th>Ім'я</th>
-                      <th>Прізвище</th>
-                      <th>Email</th>
-                      <th>Галузі</th>
-                      <th>Навички</th>
-                      <th>Статус</th>
-                      <th>Дата створення</th>
-                      <th>Дії</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Table content will be dynamically populated -->
-                  </tbody>
-                </table>
-              </div>
-              <div class="pagination" id="requestsPagination">
-                <!-- Pagination will be dynamically populated -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Orders Tab -->
-        <div id="orders-tab" class="tab-content">
+        <div id="master-requests-content" class="content-tab-pane">
           <div class="table-container">
             <div class="table-header">
-              <h3 class="table-title">Заявки клієнтів</h3>
+              <h3 class="table-title">Запити на роль репетитора</h3>
               <div class="table-actions">
                 <div class="search-box">
                   <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="ordersSearchInput"
-                  />
+                  <input type="text" placeholder="Пошук..." id="requestSearchInput" />
                 </div>
-                <button class="btn btn-primary" id="exportOrdersBtn">
-                  <i class="fas fa-download"></i> Експорт
-                </button>
               </div>
             </div>
             <div class="table-responsive">
-              <table id="ordersTable">
+              <table id="masterRequestsTable">
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Тема</th>
-                    <th>Опис</th>
-                    <th>Клієнт</th>
-                    <th>Телефон</th>
+                    <th>Користувач</th>
+                    <th>Ім'я</th>
+                    <th>Прізвище</th>
+                    <th>Email</th>
+                    <th>Предмети</th>
+                    <th>Навички</th>
                     <th>Статус</th>
-                    <th>Майстер</th>
                     <th>Дата створення</th>
                     <th>Дії</th>
                   </tr>
@@ -437,398 +355,384 @@
                 </tbody>
               </table>
             </div>
-            <div class="pagination" id="ordersPagination">
+            <div class="pagination" id="requestsPagination">
               <!-- Pagination will be dynamically populated -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Reviews Tab -->
-        <div id="reviews-tab" class="tab-content">
-          <div class="table-container">
-            <div class="table-header">
-              <h3 class="table-title">Відгуки клієнтів</h3>
-              <div class="table-actions">
-                <div class="search-box">
-                  <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="reviewsSearchInput"
-                  />
-                </div>
-                <button class="btn btn-primary" id="exportReviewsBtn">
-                  <i class="fas fa-download"></i> Експорт
-                </button>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table id="reviewsTable">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Ім'я</th>
-                    <th>Галузь</th>
-                    <th>Оцінка</th>
-                    <th>Відгук</th>
-                    <th>Майстер</th>
-                    <th>Дата</th>
-                    <th>Дії</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Table content will be dynamically populated -->
-                </tbody>
-              </table>
-            </div>
-            <div class="pagination" id="reviewsPagination">
-              <!-- Pagination will be dynamically populated -->
-            </div>
-          </div>
-
-          <!-- Reviews Statistics -->
-          <div class="charts-container">
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Розподіл оцінок</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="reviewRatingsChart"></canvas>
-              </div>
-            </div>
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Відгуки за галузями</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="reviewIndustriesChart"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- News Tab -->
-        <div id="news-tab" class="tab-content">
-          <div class="table-container">
-            <div class="table-header">
-              <h3 class="table-title">Управління новинами</h3>
-              <div class="table-actions">
-                <div class="search-box">
-                  <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="newsSearchInput"
-                  />
-                </div>
-                <button class="btn btn-success" id="addNewsBtn">
-                  <i class="fas fa-plus"></i> Додати новину
-                </button>
-                <button class="btn btn-primary" id="exportNewsBtn">
-                  <i class="fas fa-download"></i> Експорт
-                </button>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table id="newsTable">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Заголовок</th>
-                    <th>Короткий опис</th>
-                    <th>Категорія</th>
-                    <th>Статус</th>
-                    <th>Перегляди</th>
-                    <th>Дата</th>
-                    <th>Дії</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- News content will be dynamically populated -->
-                </tbody>
-              </table>
-            </div>
-            <div class="pagination" id="newsPagination">
-              <!-- Pagination will be dynamically populated -->
-            </div>
-          </div>
-
-          <!-- News Statistics -->
-          <div class="charts-container">
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Популярність новин</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="newsViewsChart"></canvas>
-              </div>
-            </div>
-            <div class="chart-card">
-              <div class="chart-header">
-                <h3 class="chart-title">Новини за категоріями</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="newsCategoriesChart"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Settings Tab -->
-        <div id="settings-tab" class="tab-content">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Налаштування системи</h3>
-            </div>
-            <div class="card-body">
-              <form id="settingsForm">
-                <div class="form-group">
-                  <label class="form-label">Назва сайту</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="siteName"
-                    value="Tutors Network Hub"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Email адміністратора</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="adminEmail"
-                    value="admin@profixnetwork.com"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label"
-                    >Автоматичне схвалення майстрів</label
-                  >
-                  <select class="form-control" id="autoApprove">
-                    <option value="0">Ні</option>
-                    <option value="1">Так</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label"
-                    >Максимальна кількість послуг на одного майстра</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="maxServices"
-                    value="10"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Модерація відгуків</label>
-                  <select class="form-control" id="reviewModeration">
-                    <option value="0">Ні</option>
-                    <option value="1">Так</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                  Зберегти налаштування
-                </button>
-              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- User Details Modal -->
-    <div class="modal-backdrop" id="userDetailsModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title">Деталі користувача</h3>
-          <button class="modal-close" id="closeUserDetailsModal">
-            &times;
-          </button>
+      <!-- Orders Tab -->
+      <div id="orders-tab" class="tab-content">
+        <div class="table-container">
+          <div class="table-header">
+            <h3 class="table-title">Запити учнів</h3>
+            <div class="table-actions">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Пошук..." id="ordersSearchInput" />
+              </div>
+              <button class="btn btn-primary" id="exportOrdersBtn">
+                <i class="fas fa-download"></i> Експорт
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table id="ordersTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Предмет</th>
+                  <th>Опис</th>
+                  <th>Учень</th>
+                  <th>Телефон</th>
+                  <th>Статус</th>
+                  <th>Репетитор</th>
+                  <th>Дата створення</th>
+                  <th>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Table content will be dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="ordersPagination">
+            <!-- Pagination will be dynamically populated -->
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="user-profile-details" id="userProfileDetails">
-            <!-- User details will be dynamically populated -->
+      </div>
+
+      <!-- Reviews Tab -->
+      <div id="reviews-tab" class="tab-content">
+        <div class="table-container">
+          <div class="table-header">
+            <h3 class="table-title">Відгуки учнів</h3>
+            <div class="table-actions">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Пошук..." id="reviewsSearchInput" />
+              </div>
+              <button class="btn btn-primary" id="exportReviewsBtn">
+                <i class="fas fa-download"></i> Експорт
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table id="reviewsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Ім'я</th>
+                  <th>Предмет</th>
+                  <th>Оцінка</th>
+                  <th>Відгук</th>
+                  <th>Репетитор</th>
+                  <th>Дата</th>
+                  <th>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Table content will be dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="reviewsPagination">
+            <!-- Pagination will be dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Reviews Statistics -->
+        <div class="charts-container">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Розподіл оцінок</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="reviewRatingsChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Відгуки за предметами</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="reviewIndustriesChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Tab -->
+      <div id="news-tab" class="tab-content">
+        <div class="table-container">
+          <div class="table-header">
+            <h3 class="table-title">Управління новинами</h3>
+            <div class="table-actions">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Пошук..." id="newsSearchInput" />
+              </div>
+              <button class="btn btn-success" id="addNewsBtn">
+                <i class="fas fa-plus"></i> Додати новину
+              </button>
+              <button class="btn btn-primary" id="exportNewsBtn">
+                <i class="fas fa-download"></i> Експорт
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table id="newsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Заголовок</th>
+                  <th>Короткий опис</th>
+                  <th>Категорія</th>
+                  <th>Статус</th>
+                  <th>Перегляди</th>
+                  <th>Дата</th>
+                  <th>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- News content will be dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="newsPagination">
+            <!-- Pagination will be dynamically populated -->
+          </div>
+        </div>
+
+        <!-- News Statistics -->
+        <div class="charts-container">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Популярність новин</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="newsViewsChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Новини за категоріями</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="newsCategoriesChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="settings-tab" class="tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Налаштування системи</h3>
+          </div>
+          <div class="card-body">
+            <form id="settingsForm">
+              <div class="form-group">
+                <label class="form-label">Назва сайту</label>
+                <input type="text" class="form-control" id="siteName" value="Tutors Network Hub" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email адміністратора</label>
+                <input type="email" class="form-control" id="adminEmail" value="admin@profixnetwork.com" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Автоматичне схвалення репетиторів</label>
+                <select class="form-control" id="autoApprove">
+                  <option value="0">Ні</option>
+                  <option value="1">Так</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Максимальна кількість предметів на одного репетитора</label>
+                <input type="number" class="form-control" id="maxServices" value="10" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Модерація відгуків</label>
+                <select class="form-control" id="reviewModeration">
+                  <option value="0">Ні</option>
+                  <option value="1">Так</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Зберегти налаштування
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Details Modal -->
+  <div class="modal-backdrop" id="userDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Деталі користувача</h3>
+        <button class="modal-close" id="closeUserDetailsModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="user-profile-details" id="userProfileDetails">
+          <!-- User details will be dynamically populated -->
+        </div>
+        <div class="form-group">
+          <label class="form-label">Предмети</label>
+          <div id="userIndustries">
+            <!-- Industries will be dynamically populated -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Навички</label>
+          <div id="userSkills">
+            <!-- Skills will be dynamically populated -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" id="deleteUserBtn">
+          Видалити користувача
+        </button>
+        <button class="btn btn-primary" id="closeUserModalBtn">
+          Закрити
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Details Modal -->
+  <div class="modal-backdrop" id="orderDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Деталі уроку</h3>
+        <button class="modal-close" id="closeOrderDetailsModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body" id="orderDetailsBody">
+        <!-- Order details will be dynamically populated -->
+      </div>
+      <div class="modal-footer" id="orderDetailsFooter">
+        <!-- Action buttons will be dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Details Modal -->
+  <div class="modal-backdrop" id="reviewDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Деталі відгуку</h3>
+        <button class="modal-close" id="closeReviewDetailsModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body" id="reviewDetailsBody">
+        <!-- Review details will be dynamically populated -->
+      </div>
+      <div class="modal-footer" id="reviewDetailsFooter">
+        <!-- Action buttons will be dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- News Details Modal -->
+  <div class="modal-backdrop" id="newsDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Деталі новини</h3>
+        <button class="modal-close" id="closeNewsDetailsModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body" id="newsDetailsBody">
+        <!-- News details will be dynamically populated -->
+      </div>
+      <div class="modal-footer" id="newsDetailsFooter">
+        <!-- Action buttons will be dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- News Editor Modal -->
+  <div class="modal-backdrop" id="newsEditorModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="newsEditorTitle">Додати новину</h3>
+        <button class="modal-close" id="closeNewsEditorModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="newsForm">
+          <input type="hidden" id="newsId" />
+          <div class="form-group">
+            <label class="form-label">Заголовок</label>
+            <input type="text" class="form-control" id="newsTitle" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Галузі</label>
-            <div id="userIndustries">
-              <!-- Industries will be dynamically populated -->
-            </div>
+            <label class="form-label">Короткий опис</label>
+            <textarea class="form-control" id="newsShortDescription" rows="3" required></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">Навички</label>
-            <div id="userSkills">
-              <!-- Skills will be dynamically populated -->
-            </div>
+            <label class="form-label">Повний текст</label>
+            <textarea class="form-control" id="newsContent" rows="6" required></textarea>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-danger" id="deleteUserBtn">
-            Видалити користувача
-          </button>
-          <button class="btn btn-primary" id="closeUserModalBtn">
-            Закрити
-          </button>
-        </div>
+          <div class="form-group">
+            <label class="form-label">Категорія</label>
+            <select class="form-control" id="newsCategory">
+              <option value="updates">Оновлення</option>
+              <option value="events">Події</option>
+              <option value="tips">Поради</option>
+              <option value="announcements">Оголошення</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Статус</label>
+            <select class="form-control" id="newsStatus">
+              <option value="published">Опубліковано</option>
+              <option value="draft">Чернетка</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Головне зображення</label>
+            <input type="file" class="form-control" id="newsMainImage" accept="image/*" />
+            <div id="mainImagePreview" class="image-preview"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Додаткові зображення</label>
+            <input type="file" class="form-control" id="newsAdditionalImages" accept="image/*" multiple />
+            <div id="additionalImagesPreview" class="image-preview-gallery"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Зовнішні посилання (по одному на рядок)</label>
+            <textarea class="form-control" id="newsExternalLinks" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="saveNewsBtn">Зберегти</button>
+        <button class="btn btn-secondary" id="cancelNewsBtn">
+          Скасувати
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Order Details Modal -->
-    <div class="modal-backdrop" id="orderDetailsModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title">Деталі заявки</h3>
-          <button class="modal-close" id="closeOrderDetailsModal">
-            &times;
-          </button>
-        </div>
-        <div class="modal-body" id="orderDetailsBody">
-          <!-- Order details will be dynamically populated -->
-        </div>
-        <div class="modal-footer" id="orderDetailsFooter">
-          <!-- Action buttons will be dynamically populated -->
-        </div>
-      </div>
-    </div>
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Операція успішно виконана</span>
+  </div>
+  <script src="./js/password.js"></script>
+  <script src="./js/admin.js"></script>
+  <script src=".js/auth.js"></script>
+  <script src=".js/role.js"></script>
+</body>
 
-    <!-- Review Details Modal -->
-    <div class="modal-backdrop" id="reviewDetailsModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title">Деталі відгуку</h3>
-          <button class="modal-close" id="closeReviewDetailsModal">
-            &times;
-          </button>
-        </div>
-        <div class="modal-body" id="reviewDetailsBody">
-          <!-- Review details will be dynamically populated -->
-        </div>
-        <div class="modal-footer" id="reviewDetailsFooter">
-          <!-- Action buttons will be dynamically populated -->
-        </div>
-      </div>
-    </div>
-
-    <!-- News Details Modal -->
-    <div class="modal-backdrop" id="newsDetailsModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title">Деталі новини</h3>
-          <button class="modal-close" id="closeNewsDetailsModal">
-            &times;
-          </button>
-        </div>
-        <div class="modal-body" id="newsDetailsBody">
-          <!-- News details will be dynamically populated -->
-        </div>
-        <div class="modal-footer" id="newsDetailsFooter">
-          <!-- Action buttons will be dynamically populated -->
-        </div>
-      </div>
-    </div>
-
-    <!-- News Editor Modal -->
-    <div class="modal-backdrop" id="newsEditorModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h3 class="modal-title" id="newsEditorTitle">Додати новину</h3>
-          <button class="modal-close" id="closeNewsEditorModal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="newsForm">
-            <input type="hidden" id="newsId" />
-            <div class="form-group">
-              <label class="form-label">Заголовок</label>
-              <input type="text" class="form-control" id="newsTitle" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Короткий опис</label>
-              <textarea
-                class="form-control"
-                id="newsShortDescription"
-                rows="3"
-                required
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Повний текст</label>
-              <textarea
-                class="form-control"
-                id="newsContent"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Категорія</label>
-              <select class="form-control" id="newsCategory">
-                <option value="updates">Оновлення</option>
-                <option value="events">Події</option>
-                <option value="tips">Поради</option>
-                <option value="announcements">Оголошення</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Статус</label>
-              <select class="form-control" id="newsStatus">
-                <option value="published">Опубліковано</option>
-                <option value="draft">Чернетка</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Головне зображення</label>
-              <input
-                type="file"
-                class="form-control"
-                id="newsMainImage"
-                accept="image/*"
-              />
-              <div id="mainImagePreview" class="image-preview"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Додаткові зображення</label>
-              <input
-                type="file"
-                class="form-control"
-                id="newsAdditionalImages"
-                accept="image/*"
-                multiple
-              />
-              <div
-                id="additionalImagesPreview"
-                class="image-preview-gallery"
-              ></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label"
-                >Зовнішні посилання (по одному на рядок)</label
-              >
-              <textarea
-                class="form-control"
-                id="newsExternalLinks"
-                rows="3"
-              ></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" id="saveNewsBtn">Зберегти</button>
-          <button class="btn btn-secondary" id="cancelNewsBtn">
-            Скасувати
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Notification -->
-    <div class="notification" id="notification">
-      <i class="fas fa-check-circle"></i>
-      <span id="notificationText">Операція успішно виконана</span>
-    </div>
-    <script src="./js/password.js"></script>
-    <script src="./js/admin.js"></script>
-    <script src="auth.js"></script>
-    <script src="role.js"></script>
-  </body>
 </html>

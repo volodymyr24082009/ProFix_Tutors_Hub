@@ -908,7 +908,12 @@ html.light .review-form-container:hover {
   padding: 0.9375rem;
   border-radius: var(--border-radius-md);
   border: 1px solid var(--border-dark);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(
+    30,
+    41,
+    59,
+    0.8
+  ); /* Darker background for better contrast */
   color: var(--text-dark);
   font-size: 1rem;
   transition: all var(--transition-medium);
@@ -919,8 +924,33 @@ html.light .form-group input,
 html.light .form-group textarea,
 html.light .form-group select {
   border: 1px solid var(--border-light);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ffffff; /* Solid white background */
   color: var(--text-light);
+}
+
+.form-group select option {
+  background-color: #1e293b; /* Dark background for options */
+  color: #e2e8f0; /* Light text */
+  padding: 0.625rem;
+  font-size: 1rem;
+}
+
+html.light .form-group select option {
+  background-color: #ffffff; /* White background in light mode */
+  color: #1e293b; /* Dark text in light mode */
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e2e8f0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9375rem center;
+  padding-right: 2.5rem;
+}
+
+html.light .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231e293b' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
 }
 
 .form-group input:focus,
@@ -941,14 +971,15 @@ html.light .form-group select {
   position: absolute;
   top: 0.9375rem;
   left: 0.9375rem;
-  color: var(--text-dark);
+  color: rgba(226, 232, 240, 0.9); /* Better contrast */
   font-size: 1rem;
   pointer-events: none;
   transition: all var(--transition-medium);
+  font-weight: 500; /* Slightly bolder */
 }
 
 html.light .form-group label {
-  color: var(--text-light);
+  color: rgba(30, 41, 59, 0.8); /* Better contrast in light mode */
 }
 
 .form-group input:focus ~ label,
@@ -1011,15 +1042,42 @@ html.light .rating-label {
 }
 
 .form-hint {
-  font-size: 0.8rem;
-  color: var(--text-dark);
-  opacity: 0.7;
+  font-size: 0.85rem; /* Slightly larger */
+  color: rgba(226, 232, 240, 0.85); /* Better visibility */
   margin-top: 0.3125rem;
   margin-left: 0.625rem;
 }
 
 html.light .form-hint {
-  color: var(--text-light);
+  color: rgba(30, 41, 59, 0.75);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-group select::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+  opacity: 1;
+}
+
+html.light .form-group input::placeholder,
+html.light .form-group textarea::placeholder,
+html.light .form-group select::placeholder {
+  color: rgba(30, 41, 59, 0.5);
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled,
+.form-group select:disabled {
+  background-color: rgba(30, 41, 59, 0.4);
+  color: rgba(226, 232, 240, 0.5);
+  cursor: not-allowed;
+}
+
+html.light .form-group input:disabled,
+html.light .form-group textarea:disabled,
+html.light .form-group select:disabled {
+  background-color: rgba(241, 245, 249, 0.8);
+  color: rgba(30, 41, 59, 0.5);
 }
 
 .submit-btn {

@@ -486,7 +486,6 @@ const createTables = async () => {
   END $$;
 `;
 
-  // Додаємо колонку industry до таблиці orders, якщо вона не існує
   const addIndustryColumnQuery = `
     DO $$ 
     BEGIN 

@@ -53,6 +53,50 @@ html.light {
   background: var(--primary-color);
 }
 
+/* Added styles for the green create order button */
+.order-form-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.create-order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+  transition: all var(--transition-fast);
+  border: none;
+  cursor: pointer;
+}
+
+.create-order-btn i {
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.create-order-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(46, 204, 113, 0.4);
+  background: linear-gradient(135deg, #229954, #27ae60);
+}
+
+.create-order-btn:hover i {
+  transform: rotate(90deg);
+}
+
+.create-order-btn:active {
+  transform: translateY(-1px);
+}
+/* </CHANGE> */
+
 /* Orders Filter */
 .orders-filter {
   display: flex;
