@@ -1,737 +1,675 @@
 <!DOCTYPE html>
 <html lang="uk" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
 
-    <title>
-      Tutors Network Hub — платформа репетиторів з математики, фізики, хімії,
-      української мови, англійської мови та інших предметів
-    </title>
-    <meta
-      name="description"
-      content="Tutors Network Hub — платформа для пошуку репетиторів з шкільних предметів: математика, фізика, хімія, українська мова та література, англійська мова, історія України, біологія, інформатика, географія, іноземні мови. Підготовка до ЗНО, НМТ, ДПА."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link rel="manifest" href="./manifest.json" />
-    <meta name="theme-color" content="#6a00ff" />
-    <link rel="icon" href="/icons/icon-192.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/pwa-banner.css" />
-  </head>
-  <body>
-    <!-- PWA Install Banner -->
-    <div id="installBanner" class="pwa-install-banner">
-      <div class="install-content">
-        <div class="install-icon">
-          <i class="fas fa-download"></i>
-        </div>
-        <div class="install-text">
-          <h3>Встановіть додаток</h3>
-          <p>Встановіть Tutors Network Hub для швидкого доступу</p>
-        </div>
+  <title>
+    Tutors Network Hub — платформа репетиторів з математики, фізики, хімії,
+    української мови, англійської мови та інших предметів
+  </title>
+  <meta name="description"
+    content="Tutors Network Hub — платформа для пошуку репетиторів з шкільних предметів: математика, фізика, хімія, українська мова та література, англійська мова, історія України, біологія, інформатика, географія, іноземні мови. Підготовка до ЗНО, НМТ, ДПА." />
+
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#6a00ff" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/pwa-banner.css" />
+</head>
+
+<body>
+  <!-- PWA Install Banner -->
+  <div id="installBanner" class="pwa-install-banner">
+    <div class="install-content">
+      <div class="install-icon">
+        <i class="fas fa-download"></i>
       </div>
-      <div class="install-actions">
-        <button id="installPwa" class="install-btn">Встановити</button>
-        <button id="closeInstallBanner" class="close-btn">
-          <i class="fas fa-times"></i>
-        </button>
+      <div class="install-text">
+        <h3>Встановіть додаток</h3>
+        <p>Встановіть Tutors Network Hub для швидкого доступу</p>
       </div>
     </div>
+    <div class="install-actions">
+      <button id="installPwa" class="install-btn">Встановити</button>
+      <button id="closeInstallBanner" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
 
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="loginModal">
-      <div class="login-modal">
-        <button class="modal-close" id="modalClose">
-          <i class="fas fa-times"></i>
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="login-modal">
+      <button class="modal-close" id="modalClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <i class="fas fa-user-lock modal-icon"></i>
+      <h2 class="modal-title">Ви ще не увійшли до системи</h2>
+      <p class="modal-message">
+        Для доступу до всіх функцій платформи, будь ласка, увійдіть до свого
+        облікового запису або зареєструйтеся.
+      </p>
+      <div class="modal-buttons">
+        <button class="modal-btn" id="modalLoginBtn">
+          <i class="fas fa-sign-in-alt"></i>
+          Увійти
         </button>
-        <i class="fas fa-user-lock modal-icon"></i>
-        <h2 class="modal-title">Ви ще не увійшли до системи</h2>
-        <p class="modal-message">
-          Для доступу до всіх функцій платформи, будь ласка, увійдіть до свого
-          облікового запису або зареєструйтеся.
-        </p>
-        <div class="modal-buttons">
-          <button class="modal-btn" id="modalLoginBtn">
-            <i class="fas fa-sign-in-alt"></i>
-            Увійти
-          </button>
+        <button class="modal-btn secondary" id="modalRegisterBtn">
+          <i class="fas fa-user-plus"></i>
+          Зареєструватися
+        </button>
+        <a href="https://docs.google.com/document/d/19WvBY3-X62R8L9akkpIT1ThriHcbu7lATVxOg_JXBA4/edit?usp=sharing"
+          target="_blank">
           <button class="modal-btn secondary" id="modalRegisterBtn">
             <i class="fas fa-user-plus"></i>
-            Зареєструватися
+            Опис структури сайту
           </button>
-        </div>
+        </a>
+
       </div>
     </div>
+  </div>
 
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <a href="index.html" class="logo">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Tutors Network Hub</span>
-        </a>
-        <div class="nav-menu" id="navMenu">
-          <a href="index.html" class="nav-link active">Головна</a>
-          <a href="tutors.html" class="nav-link">Репетитори</a>
-          <a href="message.html" class="nav-link" id="message">Повідомлення</a>
-          <a href="chat.html" class="nav-link" id="chat">Чат</a>
-          <a href="news.html" class="nav-link" id="news">Новини</a>
-          <a href="info.html" class="nav-link" id="info"
-            >Повідомлення(репетитори)</a
-          >
-          <a href="order.html" class="nav-link" id="orders">Замовлення</a>
-          <a href="profile.html" class="nav-link" id="profileLink">Профіль</a>
-          <button class="nav-button" id="loginBtn">
-            <i class="fas fa-sign-in-alt"></i>Увійти
-          </button>
-          <label class="theme-switch">
-            <input type="checkbox" id="themeToggle" />
-            <span class="slider">
-              <span class="moon">🌙</span><span class="sun">☀️</span>
-            </span>
-          </label>
-        </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Tutors Network Hub</span>
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Головна</a>
+        <a href="tutors.html" class="nav-link">Репетитори</a>
+        <a href="message.html" class="nav-link" id="message">Повідомлення</a>
+        <a href="chat.html" class="nav-link" id="chat">Чат</a>
+        <a href="news.html" class="nav-link" id="news">Новини</a>
+        <a href="info.html" class="nav-link" id="info">Повідомлення(репетитори)</a>
+        <a href="order.html" class="nav-link" id="orders">Замовлення</a>
+        <a href="profile.html" class="nav-link" id="profileLink">Профіль</a>
+        <button class="nav-button" id="loginBtn">
+          <i class="fas fa-sign-in-alt"></i>Увійти
         </button>
+        <label class="theme-switch">
+          <input type="checkbox" id="themeToggle" />
+          <span class="slider">
+            <span class="moon">🌙</span><span class="sun">☀️</span>
+          </span>
+        </label>
       </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Знайдіть ідеального репетитора для навчання
-          </h1>
-          <p class="hero-subtitle">
-            Платформа, що з'єднує учнів з професійними репетиторами з різних
-            предметів
-          </p>
-          <div class="hero-buttons">
-            <button class="hero-btn primary" id="orderNowBtn">
-              <i class="fas fa-clipboard-list"></i>
-              Замовити заняття
-            </button>
-            <button class="hero-btn secondary" id="findMasterBtn">
-              <i class="fas fa-search"></i>
-              Знайти репетитора
-            </button>
-          </div>
-        </div>
-        <div class="hero-particles" id="particles"></div>
-      </section>
-
-      <!-- Stats Section -->
-      <section class="stats-section" id="stats">
-        <div class="container">
-          <h2 class="section-title">Tutors Network Hub у цифрах</h2>
-          <div class="stats-container">
-            <div class="stats-card">
-              <div class="stats-icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <div class="stats-number" id="usersCount">0</div>
-              <div class="stats-label">Учнів</div>
-              <div class="stats-subtext">Зареєстрованих на платформі</div>
-              <div class="stats-chart">
-                <canvas id="usersChart"></canvas>
-              </div>
-              <div class="stats-growth">
-                <i class="fas fa-arrow-up"></i>
-                <span id="usersGrowth">+0</span> за тиждень
-              </div>
-            </div>
-
-            <div class="stats-card">
-              <div class="stats-icon">
-                <i class="fas fa-chalkboard-teacher"></i>
-              </div>
-              <div class="stats-number" id="mastersCount">0</div>
-              <div class="stats-label">Репетиторів</div>
-              <div class="stats-subtext">Сертифікованих викладачів</div>
-              <div class="stats-chart">
-                <canvas id="mastersChart"></canvas>
-              </div>
-              <div class="stats-growth">
-                <i class="fas fa-arrow-up"></i>
-                <span id="mastersGrowth">+0</span> за тиждень
-              </div>
-            </div>
-
-            <div class="stats-card">
-              <div class="stats-icon">
-                <i class="fas fa-tasks"></i>
-              </div>
-              <div class="stats-number" id="ordersCount">0</div>
-              <div class="stats-label">Занять</div>
-              <div class="stats-subtext">Успішно проведених уроків</div>
-              <div class="stats-chart">
-                <canvas id="ordersChart"></canvas>
-              </div>
-              <div class="stats-growth">
-                <i class="fas fa-arrow-up"></i>
-                <span id="ordersGrowth">+0</span> за тиждень
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Subjects Section (formerly Industries) -->
-      <section class="industries-section" id="industries">
-        <div class="container">
-          <h2 class="section-title">Предмети</h2>
-          <div class="industries-container" id="industriesContainer">
-            <!-- Subjects will be dynamically populated -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section class="testimonials-section" id="testimonials">
-        <div class="container">
-          <h2 class="section-title">Відгуки учнів</h2>
-          <div class="testimonials-slider" id="testimonialsSlider">
-            <div class="testimonials-track" id="testimonialsTrack">
-              <!-- Testimonials will be dynamically populated -->
-            </div>
-            <div class="testimonials-controls">
-              <button class="testimonial-control prev" id="testimonialPrev">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="testimonial-control next" id="testimonialNext">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Add Review Button -->
-          <div class="add-review-container">
-            <button class="hero-btn primary" id="addReviewBtn">
-              <i class="fas fa-star"></i>
-              Залишити відгук
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Review Form Section -->
-      <section class="review-section" id="review-form">
-        <div class="container">
-          <h2 class="section-title">Залишити відгук</h2>
-          <div class="review-container">
-            <div class="review-form-container">
-              <form id="reviewForm" class="review-form">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    id="reviewName"
-                    name="name"
-                    required
-                    placeholder=" "
-                  />
-                  <label for="reviewName">Ваше ім'я*</label>
-                </div>
-                <div class="form-group">
-                  <select id="reviewIndustry" name="industry" required>
-                    <option value="" disabled selected></option>
-                    <!-- Subjects will be dynamically populated -->
-                  </select>
-                  <label for="reviewIndustry">Предмет*</label>
-                </div>
-                <div class="form-group">
-                  <div class="rating-container">
-                    <div class="star-rating">
-                      <i class="fas fa-star" data-rating="1"></i>
-                      <i class="fas fa-star" data-rating="2"></i>
-                      <i class="fas fa-star" data-rating="3"></i>
-                      <i class="fas fa-star" data-rating="4"></i>
-                      <i class="fas fa-star" data-rating="5"></i>
-                    </div>
-                    <input
-                      type="hidden"
-                      id="reviewRating"
-                      name="rating"
-                      value=""
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <textarea
-                    id="reviewText"
-                    name="text"
-                    placeholder=" "
-                    required
-                  ></textarea>
-                  <label for="reviewText">Ваш відгук*</label>
-                </div>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    id="reviewMaster"
-                    name="master"
-                    placeholder=" "
-                  />
-                  <label for="reviewMaster"
-                    >Ім'я репетитора (якщо знаєте)</label
-                  >
-                </div>
-                <button type="submit" class="submit-btn" id="submitReviewBtn">
-                  <span>Відправити відгук</span>
-                  <i class="fas fa-paper-plane"></i>
-                </button>
-                <div id="reviewFormMessage" class="form-message"></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Order Form Section -->
-      <section class="order-section" id="order">
-        <div class="container">
-          <h2 class="section-title">Замовити заняття</h2>
-          <div class="order-container">
-            <div class="order-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Замовлення заняття"
-                class="order-image"
-              />
-              <div class="order-image-overlay">
-                <div class="order-image-text">
-                  <h3>Чому обирають нас?</h3>
-                  <ul>
-                    <li>
-                      <i class="fas fa-check-circle"></i> Перевірені репетитори
-                    </li>
-                    <li><i class="fas fa-check-circle"></i> Гарантія якості</li>
-                    <li><i class="fas fa-check-circle"></i> Швидкий відгук</li>
-                    <li><i class="fas fa-check-circle"></i> Прозорі ціни</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="order-form-container">
-              <h3 class="order-form-title">Залишити заявку</h3>
-              <form id="orderForm" class="order-form">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    id="orderTitle"
-                    name="title"
-                    required
-                    placeholder=" "
-                  />
-                  <label for="orderTitle">Тема заняття*</label>
-                </div>
-                <div class="form-group">
-                  <select id="industrySelect" name="industry" required>
-                    <option value="" disabled selected></option>
-                  </select>
-                  <label for="industrySelect">Предмет*</label>
-                </div>
-                <div class="form-group">
-                  <textarea
-                    id="orderDescription"
-                    name="description"
-                    placeholder=" "
-                  ></textarea>
-                  <label for="orderDescription">Опис потреб навчання</label>
-                </div>
-                <div class="form-group">
-                  <input
-                    type="tel"
-                    id="orderPhone"
-                    name="phone"
-                    required
-                    placeholder=" "
-                    pattern="\+380[0-9]{9}"
-                  />
-                  <label for="orderPhone">Номер телефону*</label>
-                  <small class="form-hint">Формат: +380XXXXXXXXX</small>
-                </div>
-                <button type="submit" class="submit-btn" id="submitOrderBtn">
-                  <span>Відправити заявку</span>
-                  <i class="fas fa-paper-plane"></i>
-                </button>
-                <div id="orderFormMessage" class="form-message"></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Partners Section -->
-      <section class="partners-section" id="partners">
-        <div class="container">
-          <h2 class="section-title">Наші партнери</h2>
-          <div class="partners-container">
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-university"></i>
-              </div>
-              <h3 class="partner-name">
-                Державний університет «Житомирська політехніка»
-              </h3>
-              <p class="partner-description">
-                Провідний заклад вищої освіти, що готує висококваліфікованих
-                фахівців у різних галузях науки і техніки.
-              </p>
-              <a
-                href="https://ztu.edu.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-              <h3 class="partner-name">
-                Відокремлений підрозділ «Науковий ліцей» Державного університету
-                «Житомирська політехніка»
-              </h3>
-              <p class="partner-description">
-                Інноваційний навчальний заклад, що забезпечує якісну підготовку
-                майбутніх науковців та інженерів.
-              </p>
-              <a
-                href="https://liceum.ztu.edu.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-landmark"></i>
-              </div>
-              <h3 class="partner-name">Житомирська Міська Рада</h3>
-              <p class="partner-description">
-                Орган місцевого самоврядування, що сприяє розвитку міста та
-                підтримує інноваційні освітні та технологічні проекти для
-                громади.
-              </p>
-              <a
-                href="https://zt-rada.gov.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-building"></i>
-              </div>
-              <h3 class="partner-name">Міністерство освіти і науки України</h3>
-              <p class="partner-description">
-                Центральний орган виконавчої влади, що формує та реалізує
-                державну політику у сфері освіти і науки.
-              </p>
-              <a
-                href="https://mon.gov.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-school"></i>
-              </div>
-              <h3 class="partner-name">
-                Київський національний університет імені Тараса Шевченка
-              </h3>
-              <p class="partner-description">
-                Один з найстаріших та найпрестижніших університетів України, що
-                пропонує широкий спектр освітніх програм.
-              </p>
-              <a href="https://knu.ua/" class="partner-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-book-reader"></i>
-              </div>
-              <h3 class="partner-name">
-                Львівський національний університет імені Івана Франка
-              </h3>
-              <p class="partner-description">
-                Провідний науково-освітній центр Західної України з багатою
-                історією та сучасними освітніми програмами.
-              </p>
-              <a
-                href="https://lnu.edu.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-flask"></i>
-              </div>
-              <h3 class="partner-name">
-                Національний технічний університет України «Київський
-                політехнічний інститут імені Ігоря Сікорського»
-              </h3>
-              <p class="partner-description">
-                Один з найбільших технічних університетів Європи, що готує
-                фахівців у галузі інженерії та технологій.
-              </p>
-              <a href="https://kpi.ua/" class="partner-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-laptop-code"></i>
-              </div>
-              <h3 class="partner-name">
-                Харківський національний університет радіоелектроніки
-              </h3>
-              <p class="partner-description">
-                Спеціалізований університет, що готує висококваліфікованих
-                фахівців у сфері інформаційних технологій та радіоелектроніки.
-              </p>
-              <a href="https://nure.ua/" class="partner-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-hospital"></i>
-              </div>
-              <h3 class="partner-name">
-                Національний медичний університет імені О.О. Богомольця
-              </h3>
-              <p class="partner-description">
-                Провідний медичний заклад вищої освіти, що готує лікарів та
-                науковців у різних галузях медицини.
-              </p>
-              <a href="https://nmu.ua/" class="partner-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-
-            <div class="partner-card">
-              <div class="partner-logo">
-                <i class="fas fa-globe-europe"></i>
-              </div>
-              <h3 class="partner-name">
-                Одеський національний університет імені І.І. Мечникова
-              </h3>
-              <p class="partner-description">
-                Один з найстаріших університетів Півдня України, що пропонує
-                класичну університетську освіту.
-              </p>
-              <a
-                href="https://onu.edu.ua/"
-                class="partner-link"
-                target="_blank"
-              >
-                <i class="fas fa-external-link-alt"></i> Відвідати сайт
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Communication Panel -->
-    <div class="communication-panel">
-      <button class="comm-btn" id="commToggleBtn">
-        <i class="fas fa-comments"></i>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
       </button>
-      <div class="comm-menu" id="commMenu">
-        <div class="comm-item" id="messageBtn">
-          <div class="comm-icon">
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Знайдіть ідеального репетитора для навчання
+        </h1>
+        <p class="hero-subtitle">
+          Платформа, що з'єднує учнів з професійними репетиторами з різних
+          предметів
+        </p>
+        <div class="hero-buttons">
+          <button class="hero-btn primary" id="orderNowBtn">
+            <i class="fas fa-clipboard-list"></i>
+            Замовити заняття
+          </button>
+          <a href="https://docs.google.com/document/d/19WvBY3-X62R8L9akkpIT1ThriHcbu7lATVxOg_JXBA4/edit?usp=sharing"
+            target="_blank">
+            <button class="modal-btn secondary" id="modalRegisterBtn">
+              <i class="fas fa-user-plus"></i>
+              Опис структури сайту
+            </button>
+          </a>
+
+          <button class="hero-btn secondary" id="findMasterBtn">
+            <i class="fas fa-search"></i>
+            Знайти репетитора
+          </button>
+        </div>
+      </div>
+      <div class="hero-particles" id="particles"></div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+      <div class="container">
+        <h2 class="section-title">Tutors Network Hub у цифрах</h2>
+        <div class="stats-container">
+          <div class="stats-card">
+            <div class="stats-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stats-number" id="usersCount">0</div>
+            <div class="stats-label">Учнів</div>
+            <div class="stats-subtext">Зареєстрованих на платформі</div>
+            <div class="stats-chart">
+              <canvas id="usersChart"></canvas>
+            </div>
+            <div class="stats-growth">
+              <i class="fas fa-arrow-up"></i>
+              <span id="usersGrowth">+0</span> за тиждень
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="stats-icon">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stats-number" id="mastersCount">0</div>
+            <div class="stats-label">Репетиторів</div>
+            <div class="stats-subtext">Сертифікованих викладачів</div>
+            <div class="stats-chart">
+              <canvas id="mastersChart"></canvas>
+            </div>
+            <div class="stats-growth">
+              <i class="fas fa-arrow-up"></i>
+              <span id="mastersGrowth">+0</span> за тиждень
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="stats-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <div class="stats-number" id="ordersCount">0</div>
+            <div class="stats-label">Занять</div>
+            <div class="stats-subtext">Успішно проведених уроків</div>
+            <div class="stats-chart">
+              <canvas id="ordersChart"></canvas>
+            </div>
+            <div class="stats-growth">
+              <i class="fas fa-arrow-up"></i>
+              <span id="ordersGrowth">+0</span> за тиждень
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects Section (formerly Industries) -->
+    <section class="industries-section" id="industries">
+      <div class="container">
+        <h2 class="section-title">Предмети</h2>
+        <div class="industries-container" id="industriesContainer">
+          <!-- Subjects will be dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Відгуки учнів</h2>
+        <div class="testimonials-slider" id="testimonialsSlider">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <!-- Testimonials will be dynamically populated -->
+          </div>
+          <div class="testimonials-controls">
+            <button class="testimonial-control prev" id="testimonialPrev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="testimonial-control next" id="testimonialNext">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Review Button -->
+        <div class="add-review-container">
+          <button class="hero-btn primary" id="addReviewBtn">
+            <i class="fas fa-star"></i>
+            Залишити відгук
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review Form Section -->
+    <section class="review-section" id="review-form">
+      <div class="container">
+        <h2 class="section-title">Залишити відгук</h2>
+        <div class="review-container">
+          <div class="review-form-container">
+            <form id="reviewForm" class="review-form">
+              <div class="form-group">
+                <input type="text" id="reviewName" name="name" required placeholder=" " />
+                <label for="reviewName">Ваше ім'я*</label>
+              </div>
+              <div class="form-group">
+                <select id="reviewIndustry" name="industry" required>
+                  <option value="" disabled selected></option>
+                  <!-- Subjects will be dynamically populated -->
+                </select>
+                <label for="reviewIndustry">Предмет*</label>
+              </div>
+              <div class="form-group">
+                <div class="rating-container">
+                  <div class="star-rating">
+                    <i class="fas fa-star" data-rating="1"></i>
+                    <i class="fas fa-star" data-rating="2"></i>
+                    <i class="fas fa-star" data-rating="3"></i>
+                    <i class="fas fa-star" data-rating="4"></i>
+                    <i class="fas fa-star" data-rating="5"></i>
+                  </div>
+                  <input type="hidden" id="reviewRating" name="rating" value="" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea id="reviewText" name="text" placeholder=" " required></textarea>
+                <label for="reviewText">Ваш відгук*</label>
+              </div>
+              <div class="form-group">
+                <input type="text" id="reviewMaster" name="master" placeholder=" " />
+                <label for="reviewMaster">Ім'я репетитора (якщо знаєте)</label>
+              </div>
+              <button type="submit" class="submit-btn" id="submitReviewBtn">
+                <span>Відправити відгук</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+              <div id="reviewFormMessage" class="form-message"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-section" id="order">
+      <div class="container">
+        <h2 class="section-title">Замовити заняття</h2>
+        <div class="order-container">
+          <div class="order-image-container">
+            <img
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Замовлення заняття" class="order-image" />
+            <div class="order-image-overlay">
+              <div class="order-image-text">
+                <h3>Чому обирають нас?</h3>
+                <ul>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Перевірені репетитори
+                  </li>
+                  <li><i class="fas fa-check-circle"></i> Гарантія якості</li>
+                  <li><i class="fas fa-check-circle"></i> Швидкий відгук</li>
+                  <li><i class="fas fa-check-circle"></i> Прозорі ціни</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="order-form-container">
+            <h3 class="order-form-title">Залишити заявку</h3>
+            <form id="orderForm" class="order-form">
+              <div class="form-group">
+                <input type="text" id="orderTitle" name="title" required placeholder=" " />
+                <label for="orderTitle">Тема заняття*</label>
+              </div>
+              <div class="form-group">
+                <select id="industrySelect" name="industry" required>
+                  <option value="" disabled selected></option>
+                </select>
+                <label for="industrySelect">Предмет*</label>
+              </div>
+              <div class="form-group">
+                <textarea id="orderDescription" name="description" placeholder=" "></textarea>
+                <label for="orderDescription">Опис потреб навчання</label>
+              </div>
+              <div class="form-group">
+                <input type="tel" id="orderPhone" name="phone" required placeholder=" " pattern="\+380[0-9]{9}" />
+                <label for="orderPhone">Номер телефону*</label>
+                <small class="form-hint">Формат: +380XXXXXXXXX</small>
+              </div>
+              <button type="submit" class="submit-btn" id="submitOrderBtn">
+                <span>Відправити заявку</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+              <div id="orderFormMessage" class="form-message"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" id="partners">
+      <div class="container">
+        <h2 class="section-title">Наші партнери</h2>
+        <div class="partners-container">
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-university"></i>
+            </div>
+            <h3 class="partner-name">
+              Державний університет «Житомирська політехніка»
+            </h3>
+            <p class="partner-description">
+              Провідний заклад вищої освіти, що готує висококваліфікованих
+              фахівців у різних галузях науки і техніки.
+            </p>
+            <a href="https://ztu.edu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="partner-name">
+              Відокремлений підрозділ «Науковий ліцей» Державного університету
+              «Житомирська політехніка»
+            </h3>
+            <p class="partner-description">
+              Інноваційний навчальний заклад, що забезпечує якісну підготовку
+              майбутніх науковців та інженерів.
+            </p>
+            <a href="https://liceum.ztu.edu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <h3 class="partner-name">Житомирська Міська Рада</h3>
+            <p class="partner-description">
+              Орган місцевого самоврядування, що сприяє розвитку міста та
+              підтримує інноваційні освітні та технологічні проекти для
+              громади.
+            </p>
+            <a href="https://zt-rada.gov.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="partner-name">Міністерство освіти і науки України</h3>
+            <p class="partner-description">
+              Центральний орган виконавчої влади, що формує та реалізує
+              державну політику у сфері освіти і науки.
+            </p>
+            <a href="https://mon.gov.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-school"></i>
+            </div>
+            <h3 class="partner-name">
+              Київський національний університет імені Тараса Шевченка
+            </h3>
+            <p class="partner-description">
+              Один з найстаріших та найпрестижніших університетів України, що
+              пропонує широкий спектр освітніх програм.
+            </p>
+            <a href="https://knu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-book-reader"></i>
+            </div>
+            <h3 class="partner-name">
+              Львівський національний університет імені Івана Франка
+            </h3>
+            <p class="partner-description">
+              Провідний науково-освітній центр Західної України з багатою
+              історією та сучасними освітніми програмами.
+            </p>
+            <a href="https://lnu.edu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3 class="partner-name">
+              Національний технічний університет України «Київський
+              політехнічний інститут імені Ігоря Сікорського»
+            </h3>
+            <p class="partner-description">
+              Один з найбільших технічних університетів Європи, що готує
+              фахівців у галузі інженерії та технологій.
+            </p>
+            <a href="https://kpi.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="partner-name">
+              Харківський національний університет радіоелектроніки
+            </h3>
+            <p class="partner-description">
+              Спеціалізований університет, що готує висококваліфікованих
+              фахівців у сфері інформаційних технологій та радіоелектроніки.
+            </p>
+            <a href="https://nure.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-hospital"></i>
+            </div>
+            <h3 class="partner-name">
+              Національний медичний університет імені О.О. Богомольця
+            </h3>
+            <p class="partner-description">
+              Провідний медичний заклад вищої освіти, що готує лікарів та
+              науковців у різних галузях медицини.
+            </p>
+            <a href="https://nmu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">
+              <i class="fas fa-globe-europe"></i>
+            </div>
+            <h3 class="partner-name">
+              Одеський національний університет імені І.І. Мечникова
+            </h3>
+            <p class="partner-description">
+              Один з найстаріших університетів Півдня України, що пропонує
+              класичну університетську освіту.
+            </p>
+            <a href="https://onu.edu.ua/" class="partner-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Відвідати сайт
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Communication Panel -->
+  <div class="communication-panel">
+    <button class="comm-btn" id="commToggleBtn">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="comm-menu" id="commMenu">
+      <div class="comm-item" id="messageBtn">
+        <div class="comm-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <span class="comm-text">Повідомлення</span>
+      </div>
+      <div class="comm-item" id="chatBtn">
+        <div class="comm-icon">
+          <i class="fas fa-comment-dots"></i>
+        </div>
+        <span class="comm-text">Чат</span>
+      </div>
+      <div class="comm-item" id="voiceBtn">
+        <div class="comm-icon">
+          <i class="fas fa-microphone"></i>
+        </div>
+        <span class="comm-text">Голосовий</span>
+      </div>
+      <div class="comm-item" id="videoBtn">
+        <div class="comm-icon">
+          <i class="fas fa-video"></i>
+        </div>
+        <span class="comm-text">Відео</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <i class="fas fa-graduation-cap"></i>
+          Tutors Network Hub
+        </div>
+        <p class="footer-description">
+          Tutors Network Hub — ваш надійний партнер у світі освіти. Ми
+          об'єднуємо досвідчених репетиторів та учнів, щоб забезпечити
+          найкращі результати навчання з різних предметів.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-title">Швидкі посилання</h3>
+        <ul class="footer-links">
+          <li class="footer-link">
+            <a href="index.html">
+              <i class="fas fa-chevron-right"></i> Головна
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="tutors.html">
+              <i class="fas fa-chevron-right"></i> Репетитори
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="#industries">
+              <i class="fas fa-chevron-right"></i> Предмети
+            </a>
+          </li>
+          <li class="footer-link" id="profileFooterLink">
+            <a href="faq.html">
+              <i class="fas fa-chevron-right"></i> Часті запитання
+            </a>
+          </li>
+          <li class="footer-link" id="news">
+            <a href="terms-of-use.html">
+              <i class="fas fa-chevron-right"></i> Умови використання
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="privacy-policy.html">
+              <i class="fas fa-chevron-right"></i> Політика конфіденційності
+            </a>
+          </li>
+          <li class="footer-link">
+            <a href="./about.html">
+              <i class="fas fa-chevron-right"></i> Про нас
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-title">Контакти</h3>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Адреса</div>
+            <div class="contact-value">м. Житомир, вул. Чуднівська, 103</div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">
+              <a href="tel:+380965383239">+380 96 538 3239</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <div class="contact-icon">
             <i class="fas fa-envelope"></i>
           </div>
-          <span class="comm-text">Повідомлення</span>
-        </div>
-        <div class="comm-item" id="chatBtn">
-          <div class="comm-icon">
-            <i class="fas fa-comment-dots"></i>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:24g_chvv@liceum.ztu.edu.ua">24g_chvv@liceum.ztu.edu.ua</a>
+            </div>
           </div>
-          <span class="comm-text">Чат</span>
         </div>
-        <div class="comm-item" id="voiceBtn">
-          <div class="comm-icon">
-            <i class="fas fa-microphone"></i>
+        <div class="footer-contact">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
           </div>
-          <span class="comm-text">Голосовий</span>
-        </div>
-        <div class="comm-item" id="videoBtn">
-          <div class="comm-icon">
-            <i class="fas fa-video"></i>
+          <div class="contact-info">
+            <div class="contact-label">Графік роботи</div>
+            <div class="contact-value">Пн-Пт: 9:00 - 18:00</div>
           </div>
-          <span class="comm-text">Відео</span>
         </div>
       </div>
     </div>
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Tutors Network Hub. Всі права захищені.
+      </p>
+    </div>
+  </footer>
+  <script src="./js/role.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/auth.js"></script>
+</body>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <div class="footer-logo">
-            <i class="fas fa-graduation-cap"></i>
-            Tutors Network Hub
-          </div>
-          <p class="footer-description">
-            Tutors Network Hub — ваш надійний партнер у світі освіти. Ми
-            об'єднуємо досвідчених репетиторів та учнів, щоб забезпечити
-            найкращі результати навчання з різних предметів.
-          </p>
-          <div class="footer-social">
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 class="footer-title">Швидкі посилання</h3>
-          <ul class="footer-links">
-            <li class="footer-link">
-              <a href="index.html">
-                <i class="fas fa-chevron-right"></i> Головна
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="tutors.html">
-                <i class="fas fa-chevron-right"></i> Репетитори
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="#industries">
-                <i class="fas fa-chevron-right"></i> Предмети
-              </a>
-            </li>
-            <li class="footer-link" id="profileFooterLink">
-              <a href="faq.html">
-                <i class="fas fa-chevron-right"></i> Часті запитання
-              </a>
-            </li>
-            <li class="footer-link" id="news">
-              <a href="terms-of-use.html">
-                <i class="fas fa-chevron-right"></i> Умови використання
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="privacy-policy.html">
-                <i class="fas fa-chevron-right"></i> Політика конфіденційності
-              </a>
-            </li>
-            <li class="footer-link">
-              <a href="./about.html">
-                <i class="fas fa-chevron-right"></i> Про нас
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3 class="footer-title">Контакти</h3>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Адреса</div>
-              <div class="contact-value">м. Житомир, вул. Чуднівська, 103</div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-phone-alt"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Телефон</div>
-              <div class="contact-value">
-                <a href="tel:+380965383239">+380 96 538 3239</a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Email</div>
-              <div class="contact-value">
-                <a href="mailto:24g_chvv@liceum.ztu.edu.ua"
-                  >24g_chvv@liceum.ztu.edu.ua</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <div class="contact-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Графік роботи</div>
-              <div class="contact-value">Пн-Пт: 9:00 - 18:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="copyright">
-          &copy; 2025 Tutors Network Hub. Всі права захищені.
-        </p>
-      </div>
-    </footer>
-    <script src="./js/role.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/pwa.js"></script>
-    <script src="js/auth.js"></script>
-  </body>
 </html>
